@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"><{include file="defualt/public/seo.html"}>
+    <link href="<{$CUR_TPL_PATH}>css/bootstrap.css" rel="stylesheet">
+    <link href="<{$CUR_TPL_PATH}>layui/css/layui.css" rel="stylesheet">
+<!--     <link href="<{$CUR_TPL_PATH}>css/bootstrap.css" rel="stylesheet"> -->
+    <link href="<{$CUR_TPL_PATH}>css/video.css" rel="stylesheet">
+    <link href="<{$CUR_TPL_PATH}>css/iconfont.css" rel="stylesheet">
+    <link href="<{$CUR_TPL_PATH}>css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="<{$CUR_TPL_PATH}>css/swiper-4.3.3.min.css">
+    <script src="<{$CUR_TPL_PATH}>js/flexable.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+</head>
+<body>
+    <!--导航区域-->
+    <div class="bh_nav_box">
+        <{include file="defualt/public/header.html"}>
+    </div>
+    <!--banner区域-->
+    <div class="bh_banner bh_banner-product">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <a href="<{$banner['lianjie']}>" target="_blank">
+                        <img class="banner_02" src="<{$banner['suoluetu']}>" alt="<{$banner['tupianalt']}>" title="<{$banner['tupians']}>">
+                    </a>
+                    <div class="carousel-caption"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="swiper-product">
+        <a href="<{$banner['lianjie']}>">
+            <img src="<{$banner['shoujiduantupian']}>" alt="<{$banner['tupianalt']}>">
+        </a>
+    </div>
+
+    <!--tab切换区域-->
+    <div class="layui-tab layui-tab-brief zx-brief" lay-filter="docDemoTabBrief">
+        <div id="fiexd_title3">
+            <ul class="product_tabs_bg">
+                <{foreach $sortList as $v}>
+                   <{if $v['id']==294}>
+                        <{foreach $v['child'] as $k=>$vv}>
+                            <{if $vv['id']==$sort}>
+                                <li class="layui-this fiexd_title3">
+                                    <a href="<{$vv['u5']}>"><{$vv['u1']}></a></li>
+                            <{else}>
+                                <li class="fiexd_title3"><a href="<{$vv['u5']}>"><{$vv['u1']}></a></li>
+                            <{/if}>
+                        <{/foreach}>
+                    <{/if}>
+                <{/foreach}>
+            </ul>
+        </div>
+        <!--面包屑导航-->
+        <div id="nav_crumbs2">
+            <a href="/"><{$sortList[0]['u1']}></a> >
+            <a href="<{$sortList[1]['u5']}>"><{$sortList[1]['u1']}></a>
+            <{foreach $sortList as $v}>
+                <{if $v['id']==294}>
+                    <{foreach $v['child'] as $vv}>
+                        <{if $vv['id']==$id}>
+                            ><a><{$vv['u1']}></a>
+                        <{/if}>
+                    <{/foreach}>
+                <{/if}>
+            <{/foreach}>
+        </div>
+        <div class="layui-tab-content">
+            <!--公司介绍区域-->
+            <{if $type==1}>
+                <div class="layui-tab-item layui-show">
+                    <div class="tabs_box01 clearfix">
+                        <div class="introduce_pic pull-left">
+                            <!--<img src="<{$gong['suoluetu']}>" alt="">-->
+                            <div class="m-video" data-src="<{$gong['shipin']}>">
+                                <img src="<{$gong['suoluetu']}>" alt="">
+                                <span class="iconfont icon-bofang"  style="cursor: pointer"></span>
+                            </div>
+                        </div>
+                        <div class="introduce_text pull-left">
+                            <h3><{$gong['biaoti']}></h3>
+                            <p><{$gong['jianjie']}></p>
+                        </div>
+                    </div>
+                    <div class="tabs_box02 clearfix">
+                        <div class="tabs_box02_left pull-left">
+                            <h3 class="tabs_box02_left_move"><{$gong['biaoti1']}></h3>
+                            <p class="tabs_box02_left_move"><{$gong['jianjie1']}></p>
+                        </div>
+                        <div class="tabs_box02_right tabs_box02_left pull-left">
+                            <h3><{$gong['biaoti2']}></h3>
+                            <p><{$gong['jianjie2']}></p>
+                        </div>
+                    </div>
+                    <div class="tabs_box03">
+                        <div class="layui-container" id="tabs_box03">
+                            <div class="layui-row tabs_box03_container">
+                                <{foreach $sortList as $v}>
+                                    <{if $v['id']==299}>
+                                        <{foreach $v['child'] as $vv}>
+                                            <{foreach $tu as $b}>
+                                                <{if $vv['id']==$b['fenlei']}>
+                                                    <div class="tabs_box03_list layui-col-lg1-5 layui-col-md4 layui-col-sm6 layui-col-xs6 white">
+                                                        <a href="<{$vv['u5']}>">
+                                                            <img src="<{$b['tubiao']}>" alt="">
+                                                            <p><{$vv['u1']}></p>
+                                                        </a>
+                                                    </div>
+                                                <{/if}>
+                                            <{/foreach}>
+                                        <{/foreach}>
+                                    <{/if}>
+                                <{/foreach}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <{else}>
+                <!-- <div class="layui-tab-item layui-hidden">
+                    <div class="tabs_box01 clearfix">
+                        <div class="introduce_pic pull-left">
+                            <img src="<{$gong['suoluetu']}>" alt="">
+                        </div>
+                        <div class="introduce_text pull-left">
+                            <h3><{$gong['biaoti']}></h3>
+                            <p><{$gong['jianjie']}></p>
+                        </div>
+                    </div>
+                    <div class="tabs_box02 clearfix">
+                        <div class="tabs_box02_left pull-left">
+                            <h3 class="tabs_box02_left_move"><{$gong['biaoti1']}></h3>
+                            <p class="tabs_box02_left_move"><{$gong['jianjie1']}></p>
+                        </div>
+                        <div class="tabs_box02_right tabs_box02_left pull-left">
+                            <h3><{$gong['biaoti2']}></h3>
+                            <p><{$gong['jianjie2']}></p>
+                        </div>
+                    </div>
+                    <div class="tabs_box03">
+                        <div class="layui-container">
+                            <div class="layui-row tabs_box03_container">
+                                <{foreach $sortList as $v}>
+                                    <{if $v['id']==299}>
+                                        <{foreach $v['child'] as $vv}>
+                                            <{foreach $tu as $b}>
+                                                <{if $vv['id']==$b['fenlei']}>
+                                                    <div class="tabs_box03_list layui-col-lg1-5 layui-col-md4 layui-col-sm6 layui-col-xs6 white">
+                                                        <a href="<{$vv['u5']}>">
+                                                            <img src="<{$b['tubiao']}>" alt="">
+                                                            <p><{$vv['u1']}></p>
+                                                        </a>
+                                                    </div>
+                                                <{/if}>
+                                            <{/foreach}>
+                                        <{/foreach}>
+                                    <{/if}>
+                                <{/foreach}>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            <{/if}>
+            <!--企业文化区域-->
+            <{if $type==2}>
+                <div class="layui-tab-item layui-show">
+                    <div class="culture clearfix">
+                        <{foreach $wen as $k=>$v}>
+                            <{if $k==0}>
+                                <div class="culture_01  culture_this pull-left" style="background: url(<{$v['beijingtu']}>)">
+                                    <p><{$v['biaoti']}></p>
+                                    <p><{$v['jianjie']}></p>
+                                    <img src="<{$v['tubiao']}>" alt="">
+                                </div>
+                            <{else}>
+                                <div class="culture_01 pull-left" style="background: url(<{$v['beijingtu']}>)">
+                                    <p><{$v['biaoti']}></p>
+                                    <p><{$v['jianjie']}></p>
+                                    <img src="<{$v['tubiao']}>" alt="">
+                                </div>
+                            <{/if}>
+                        <{/foreach}>
+                    </div>
+                </div>
+            <{else}>
+               <!--  <div class="layui-tab-item">
+                    <div class="culture clearfix">
+                        <{foreach $wen as $k=>$v}>
+                            <{if $k==0}>
+                                <div class="culture_01  culture_this pull-left" style="background: url(<{$v['beijingtu']}>)">
+                                    <p><{$v['biaoti']}></p>
+                                    <p><{$v['jianjie']}></p>
+                                    <img src="<{$v['tubiao']}>" alt="">
+                                </div>
+                            <{else}>
+                                <div class="culture_01 pull-left" style="background: url(<{$v['beijingtu']}>)">
+                                    <p><{$v['biaoti']}></p>
+                                    <p><{$v['jianjie']}></p>
+                                    <img src="<{$v['tubiao']}>" alt="">
+                                </div>
+                            <{/if}>
+                        <{/foreach}>
+                    </div>
+                </div> -->
+            <{/if}>
+            <!--企业资质-->
+            <{if $type==3}>
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-row qualification_list ">
+                        <{foreach $qi as $v}>
+                            <div class="qualification_list_box layui-col-md4">
+                                <div class="qualification_list_box_1">
+                                    <img src="<{$v['suoluetu']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>">
+                                    <p><{$v['biaoti']}></p>
+                                </div>
+                            </div>
+                        <{/foreach}>
+                    </div>
+                    <div class="page ">
+                        <ul class="clearfix">
+                            <{$pageinfo}>
+                        </ul>
+                    </div>
+                </div>
+            <{else}>
+                <!-- <div class="layui-tab-item">
+                    <div class="layui-row qualification_list ">
+                        <{foreach $qi as $v}>
+                            <div class="qualification_list_box layui-col-md4">
+                                <div class="qualification_list_box_1">
+                                    <img src="<{$v['suoluetu']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>">
+                                    <p><{$v['biaoti']}></p>
+                                </div>
+                            </div>
+                        <{/foreach}>
+                    </div>
+                    <div class="page ">
+                        <ul class="clearfix">
+                            <{$pageinfo}>
+                        </ul>
+                    </div>
+                </div> -->
+            <{/if}>
+            <!--联系我们-->
+            <{if $type==4}>
+                <div class="layui-tab-item layui-show">
+                    <div class="tabs_contact ">
+                        <{foreach $lian as $k=>$v}>
+                        <div class="tabs_contact_box1 clearfix ">
+                            <div class="tabs_contact_boxf">
+                                <h3><{$v['biaoti']}></h3>
+                                <p class="addrdizhi"><{$v['dizhi']}></p>
+                                <span class="tabs_contact_boxf_line"></span>
+                                <ul>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon01.png" alt=""></span>
+                                        <p class="pull-left">合作服务热线：<{$v['hezuofuwurexian']}></p>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon05.png" alt=""></span>
+                                        <p class="pull-left">全国热线：
+                                            <{$v['quanguorexian']}>
+                                        </p>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon02.png" alt=""></span>
+                                        <p class="pull-left">投诉热线：<{$v['tousurexian']}></p>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon03.png" alt=""></span>
+                                        <p class="pull-left">公司邮箱：<{$v['youxiang']}></p>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon04.png" alt=""></span>
+                                        <p class="pull-left">邮编：<{$v['youbian']}></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="lat" style="display: none;"><{$v['jingdu']}></p>
+                            <p class="lng" style="display: none;"><{$v['weidu']}></p>
+                            <div class="tabs_contact_boxr">
+                                <div class="tabs_contact_box2_map dituContent"></div>
+                            </div>
+                        </div>
+                        <{/foreach}> 
+                    </div>
+                    <div class="tabs_contact_box2">
+                        <div class="tabs_contact">
+                            <h3>公司体验店地址</h3>
+                            <div class="con">
+							    <p><span><strong>郫都体验店 </strong></span>地址：成都市高新区西区大道1808号桂祥大厦17F</p>
+                                <p><span><strong>成都体验店 </strong></span>地址：成都市高新区吉泰五路88号4403</p>
+                                <p><span><strong>双流体验店 </strong></span>地址：双流西航港杨桥路161号</p>
+                                <p><span><strong>龙泉体验店 </strong> </span>地址：龙泉驿区音乐广场锦宏时代505室（地铁A出口）</span></p>
+                                <p><span><strong>崇州体验店</strong> </span>地址：崇州市崇庆北路613号（崇州客运站对面）</span></p>
+                                <p><span><strong>绵阳体验店</strong> </span>地址：绵阳市高新区永兴镇华裕路5组11号</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <{else}>
+                <!-- <div class="layui-tab-item">
+                    <div class="tabs_contact ">
+                        <div class="tabs_contact_box1 clearfix ">
+                            <div class="tabs_contact_boxf">
+                                <h3><{$lian['biaoti']}></h3>
+                                <p><{$lian['dizhi']}></p>
+                                <span class="tabs_contact_boxf_line"></span>
+                                <ul>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon01.png" alt=""></span>
+                                        <p class="pull-left">成都服务热线：<{$lian['hezuofuwurexian']}></p>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon05.png" alt=""></span>
+                                        <p class="pull-left">全国热线：
+                                            <{$lian['quanguorexian']}>
+                                        </p>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon02.png" alt=""></span>
+                                        <p class="pull-left">投诉热线：<{$lian['tousurexian']}></p>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon03.png" alt=""></span>
+                                        <p class="pull-left">投诉邮箱：<{$lian['youxiang']}></p>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span class="pull-left"><img src="<{$CUR_TPL_PATH}>images/introduce/contact_icon04.png" alt=""></span>
+                                        <p class="pull-left">邮编：<{$lian['youbian']}></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tabs_contact_boxr">
+                                <div class="tabs_contact_box2_map"  id="dituContent"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs_contact_box2">
+                        <div class="tabs_contact">
+                            <h3>公司体验店地址</h3>
+                            <div class="con">
+							    <p><span>郫都体验店</span>地址：成都市高新区西区大道1808号桂祥大厦17F</p>
+                                <p><span>成都体验店</span>地址：成都高新区吉泰五路88号4403-4405</p>
+                                <p><span>双流体验店</span>地址：双流西航港杨桥路52号（双流看守所对面）</p>
+                                <p><span>龙泉体验店</span>地址：龙泉驿区音乐广场锦宏时代505室（地铁A出口）</span></p>
+                                <p><span>崇州体验店 </span>地址：崇州市崇庆北路613号（崇州客运站对面）</p>
+                                <p><span>绵阳体验店</span>地址：绵阳市高新区永兴镇华裕路5组11号</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            <{/if}>
+        </div>
+    </div>
+
+    <!--联系我们-->
+    <div class="bh_foot">
+        <{include file="defualt/public/footer.html"}>
+    </div>
+</body>
+<script src="<{$CUR_TPL_PATH}>js/jquery-3.3.1.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/jquery.running.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/bootstrap.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/pingzi_video.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/swiper-4.3.3.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>layui/layui.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/map.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/index.js"></script>
+<script>
+    //tab切换
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+
+    /*移动端滑动导航*/
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 0,
+        slidesPerView:'auto',
+        freeMode: false
+    });
+
+   $(function(){
+        //点击按钮时判断 百度商桥代码中的“我要咨询”按钮的元素是否存在，存在的话就执行一次点击事件
+        $(".shangqiao").click(function(event) {
+            if ($('#nb_invite_ok').length > 0) {
+                $('#nb_invite_ok').click();
+            }
+        })
+        var offs = $('#fiexd_title3').offset();
+        $(window).scroll(function() {
+           if(IsPC()){
+              scrollLis($('#fiexd_title3'),offs);
+           } 
+        });
+   })
+
+
+</script>
+</html>

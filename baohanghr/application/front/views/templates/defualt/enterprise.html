@@ -1,0 +1,179 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <{include file="defualt/public/seo.html"}>
+    <link href="<{$CUR_TPL_PATH}>css/bootstrap.css" rel="stylesheet">
+    <link href="<{$CUR_TPL_PATH}>layui/css/layui.css" rel="stylesheet">
+    <link href="<{$CUR_TPL_PATH}>css/main.css" rel="stylesheet">
+    <script src="<{$CUR_TPL_PATH}>js/flexable.js"></script>
+</head>
+<body>
+    <!--导航区域-->
+    <div class="bh_nav_box">
+        <{include file="defualt/public/header.html"}>
+    </div>
+
+    <!--banner区域-->
+    <div class="bh_banner bh_banner-product">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <a href="<{$banner['lianjie']}>" target="_blank">
+                        <img class="banner_05" src="<{$banner['suoluetu']}>" alt="">
+                    </a>
+                    <div class="carousel-caption"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="swiper-product">
+        <a href="<{$banner['lianjie']}>">
+            <img src="<{$banner['shoujiduantupian']}>" alt="<{$banner['tupianalt']}>">
+        </a>
+    </div>
+    <!--内容区域-->
+    <div class="nav_s" id="fiexd_title4">
+        <ul>
+            <{foreach $sortList as $v}>
+                <{if $v['id']==306}>
+                    <{foreach $v['child'] as $k=>$vv}>
+                        <li id="Activity<{$k}>"><a href="javascript:;"><{$vv['u1']}></a></li>
+                    <{/foreach}>
+                <{/if}>
+            <{/foreach}>
+        </ul>
+    </div>
+    <!--面包屑导航-->
+<div id="nav_crumbs5">
+    <a href="/"><{$sortList[0]['u1']}>></a>
+        <a href="<{$sortList[4]['u5']}>"><{$sortList[4]['u1']}>></a>
+    <{foreach $sortList as $v}>
+        <{if $v['id']==306}>
+            <{foreach $v['child'] as $vv}>
+                <a href="<{$vv['u5']}>"><{$vv['u1']}></a>
+            <{/foreach}>
+        <{/if}>
+    <{/foreach}>
+
+
+</div>
+<div class="mien_container mien_container01 clearfix" id="mien_container01">
+    <div class="show_tit">
+        <h1><{$sortList[4]['child'][0]['u1']}></h1>
+        <p><{$sortList[4]['child'][0]['u9']}></p>
+        <span class="show_tit_line"></span>
+    </div>
+    <div class="mien_box01 clearfix">
+        <ul class="clearfix">
+           <{foreach $qi as $v}>
+                <li><img src="<{$v['suoluetu']}>" alt=""></li>
+           <{/foreach}>
+        </ul>
+    </div>
+</div>
+<div class="mien_container mien_container02 clearfix" id="mien_container02">
+    <div class="show_tit">
+        <h1><{$sortList[4]['child'][1]['u1']}></h1>
+        <p><{$sortList[4]['child'][1]['u9']}></p>
+        <span class="show_tit_line"></span>
+    </div>
+    <div class="mien_box02 clearfix">
+        <ul>
+            <{foreach $lao as $v}>
+                <li>
+                    <img src="<{$v['suoluetu']}>" alt="">
+                    <p><{$v['biaoti']}></p>
+                    <div></div>
+                </li>
+            <{/foreach}>
+        </ul>
+    </div>
+</div>
+<div class="mien_container mien_container03 clearfix" id="mien_container03">
+    <div class="show_tit">
+        <h1><{$sortList[4]['child'][2]['u1']}></h1>
+        <p><{$sortList[4]['child'][2]['u9']}></p>
+        <span class="show_tit_line"></span>
+    </div>
+    <div class="mien_box03 clearfix">
+        <ul class="mien_meet01 clearfix">
+            <{foreach $hui as $v}>
+                <li>
+                    <img src="<{$v['suoluetu']}>" alt="">
+                    <p><{$v['biaoti']}></p>
+                    <div></div>
+                </li>
+            <{/foreach}>
+        </ul>
+    </div>
+</div>
+<div class="mien_introduction">
+    <ul class="introduce_box">
+        <{foreach $shu as $k=>$v}>
+            <{if $k==0}>
+                <li>
+                    <p class="txt_1"><span class="animateNum" data-animatetype="num" data-animatetarget="<{$v['shuzi']}>"><{$v['shuzi']}></span><{$v['danwei']}></p>
+                    <p class="txt_2"><{$v['miaoshu']}></p>
+                </li>
+            <{else}>
+                <li>
+                    <p class="txt_1"><span class="animateNum animateNum_01" data-animatetype="num" data-animatetarget="<{$v['shuzi']}>"><{$v['shuzi']}></span><{$v['danwei']}></p>
+                    <p class="txt_2"><{$v['miaoshu']}></p>
+                </li>
+            <{/if}>
+        <{/foreach}>
+    </ul>
+</div>
+<!--联系我们-->
+<div class="bh_foot">
+    <{include file="defualt/public/footer.html"}>
+</div>
+
+<script src="<{$CUR_TPL_PATH}>js/jquery-3.3.1.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/jquery.running.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/bootstrap.js"></script>
+<script src="<{$CUR_TPL_PATH}>layui/layui.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/index.js"></script>
+<script>
+//    数字变化功能
+    $(function(){
+        $('body').running();
+        var mien_container01 = $('#mien_container01');
+        var mien_container02 = $('#mien_container02');
+        var mien_container03 = $('#mien_container03');
+        if(<{$type}>==1) {
+            $('html,body').animate({scrollTop:mien_container01.offset().top-80},200)
+        }
+        if(<{$type}>==2) {
+            $('html,body').animate({scrollTop:mien_container02.offset().top-80},200)
+        }
+        if(<{$type}>==3) {
+            $('html,body').animate({scrollTop:mien_container03.offset().top-80},200)
+        }
+    })
+</script>
+<script>
+   $(function(){
+    //点击按钮时判断 百度商桥代码中的“我要咨询”按钮的元素是否存在，存在的话就执行一次点击事件
+        $(".shangqiao").click(function(event) {
+            if ($('#nb_invite_ok').length > 0) {
+                $('#nb_invite_ok').click();
+            }
+        });
+
+        var offs = $('#fiexd_title4').offset();
+        $(window).scroll(function() {
+           if(IsPC()){
+              scrollLis($('#fiexd_title4'),offs);
+           } 
+        });
+   })
+</script>
+</body>
+</html>

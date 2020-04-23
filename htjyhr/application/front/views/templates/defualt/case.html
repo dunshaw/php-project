@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <{include file="defualt/public/seo.html"}>
+    <link href="<{$CUR_TPL_PATH}>css/bootstrap.css" rel="stylesheet">
+    <link href="<{$CUR_TPL_PATH}>layui/css/layui.css" rel="stylesheet">
+    <link href="<{$CUR_TPL_PATH}>css/main.css" rel="stylesheet">
+    <script src="<{$CUR_TPL_PATH}>js/flexable.js"></script>
+</head>
+<body>
+    <!--导航区域-->
+    <div class="bh_nav_box">
+        <{include file="defualt/public/header.html"}>
+    </div>
+    <!--banner区域-->
+    <div class="bh_banner bh_banner-product">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <a href="<{$banner['lianjie']}>" target="_blank">
+                        <img class="banner_04" src="<{$banner['suoluetu']}>" alt="">
+                    </a>
+                    <div class="carousel-caption"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="swiper-product">
+        <a href="<{$banner['lianjie']}>">
+            <img src="<{$banner['shoujiduantupian']}>" alt="<{$banner['tupianalt']}>">
+        </a>
+    </div>
+    <!--面包屑导航-->
+<!--     <div id="nav_crumbs4">
+        <a href="/"><{$sortList[0]['u1']}>> </a>
+        <a href="<{$sortList[3]['u5']}>"><{$sortList[3]['u1']}></a>
+    </div> -->
+<!--案例区域-->
+<div class="bh_case">
+    <div class="bh_case_container">
+        <ul class="bh_case_box clearfix">
+            <{foreach $tableList as $v}>
+                <li>
+                    <a href="/case/detail?id=<{$v['id']}>&sort_id=305">
+                        <img src="<{$v['logo']}>" alt="" width="117" height="82">
+                        <p><{$v['biaoti']}></p>
+                        <p><{$v['dtime']}></p>
+                        <p><{$v['jianjie']}></p>
+                        <!--<p>READY MORE</p>-->
+                    </a>
+                </li>
+            <{/foreach}>
+        </ul>
+        <div class="page ">
+            <ul class="clearfix">
+                <{$pageinfo}>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--联系我们-->
+<div class="bh_foot">
+    <{include file="defualt/public/footer.html"}>
+</div>
+
+<script src="<{$CUR_TPL_PATH}>js/jquery-3.3.1.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/jquery.running.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/bootstrap.js"></script>
+<script src="<{$CUR_TPL_PATH}>layui/layui.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/index.js"></script>
+</body>
+<script>
+   $(function(){
+    //点击按钮时判断 百度商桥代码中的“我要咨询”按钮的元素是否存在，存在的话就执行一次点击事件
+        $(".shangqiao").click(function(event) {
+            if ($('#nb_invite_ok').length > 0) {
+                $('#nb_invite_ok').click();
+            }
+        });
+   })
+</script>
+</html>

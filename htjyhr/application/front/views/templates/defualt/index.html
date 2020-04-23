@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>鸿途</title>
+<link href="<{$CUR_TPL_PATH}>css/bootstrap.css" rel="stylesheet">
+<link href="<{$CUR_TPL_PATH}>layui/css/layui.css" rel="stylesheet">
+<link rel="stylesheet" href="<{$CUR_TPL_PATH}>css/index.css">
+<style>
+    .section { text-align: center; font: 30px "Microsoft Yahei"; color: #fff;}
+</style>
+</head>
+
+<body>
+    <!--导航区域-->
+    <div class="bh_nav_box">
+        <{include file="defualt/public/header.html"}>
+    </div>
+
+    <div id="dowebok">
+        <div class="section" id='section1'>
+            <{foreach $banner as $k=>$v}>
+                <div class="slide">
+                    <img src="<{$v['suoluetu']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>">
+                </div>
+            <{/foreach}>
+            <{foreach $banner as $k=>$v}>
+                    <{if empty($v['lianjie'])}>
+                        <{if $k==0}>
+                        <div class="slide">
+                            <img src="<{$v['suoluetu']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>">
+                        </div>
+                        <{else}>
+                        <div class="slide">
+                            <img src="<{$v['suoluetu']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>">
+                        </div>
+                        <{/if}>
+                    <{else}>
+                        <{if $k==0}>
+                        <div class="slide">
+                            <img src="<{$v['suoluetu']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>">
+                        </div>
+                        <{else}>
+                        <div class="slide">
+                            <img src="<{$v['suoluetu']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>">
+                        </div>
+                        <{/if}>
+                    <{/if}>
+                <{/foreach}>    
+        </div>
+        <div class="section" id='section2'>
+            <div class="contents">
+                <div class="content-head">
+                    <h3 class="section-title">服务方案 <i class="section-title-p">Service Plan</i></h3>
+                    <div class="content-head-line"></div>
+                </div>
+                <div class="content-main">
+                    <!--产品区域-->
+                    <div class="bh_procuct_box">
+                       <{foreach $sortList as $v}>
+                            <{if $v['id']==299}>
+                                <{foreach $v['child'] as $key=>$vv}>
+                                    <{foreach $tu as $b}>
+                                        <{if $b['fenlei']==$vv['id']}>
+                                        <!-- <a href="<{$vv['u5']}>"> -->
+                                           <div class="procuct_box_border layui-col-lg3 layui-col-md3 layui-col-sm12 layui-col-xs12">
+                                            <div class="divfront">
+                                               <p class="procuct_box_border_index">0<{$key+1}></p>
+                                               <p class="procuct_box_border_title"><{$vv['u1']}></p>
+                                               <div class="bh_procuct_box_huiline"></div>
+                                               <{foreach explode(',',$b['miaoshu']) as $t}>
+                                               <p class="procuct_box_border_child"><{$t}></p>
+                                               <{/foreach}>
+                                            </div>
+                                            <div class="divback">
+                                               <p class="procuct_box_border_index">0<{$key+1}></p>
+                                               <p class="procuct_box_border_title"><{$vv['u1']}></p>
+                                               <div class="bh_procuct_box_huiline"></div>
+                                               <{foreach explode(',',$b['miaoshu']) as $t}>
+                                               <p class="procuct_box_border_child"><{$t}></p>
+                                               <{/foreach}>
+                                            </div>
+                                           </div>
+                                        <!-- </a> -->
+                                        <{/if}>
+                                    <{/foreach}>
+                                <{/foreach}>
+                            <{/if}>
+                       <{/foreach}>
+                       <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id='section3'>
+            <div class="contents">
+                <div class="content-head">
+                    <h3 class="section-title color_fff">成功案例 <i class="section-title-p color_fff">SuccessFul Case</i></h3>
+                    <div class="content-head-line content-head-line-fff"></div>
+                </div>
+                <div class="content-main">
+                    <!--案例区域-->
+                    <{foreach $jingtu as $k=>$v}>
+                        <{if $k<4}>
+                            <div class="bh_case_box layui-col-lg3 layui-col-md3 layui-col-sm12 layui-col-xs12">
+                                <div class="bh_case_main1">
+                                    <a href="/case/detail?id=<{$v['id']}>&sort_id=305">
+                                        <img src="<{$v['logo']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>" class="bh_case_img">
+                                    </a>
+                                </div>
+                            </div>
+                            <{else}>
+                            <div class="bh_case_box layui-col-lg3 layui-col-md3 layui-col-sm12 layui-col-xs12">
+                                <div class="bh_case_main2">
+                                    <a href="/case/detail?id=<{$v['id']}>&sort_id=305">
+                                        <img src="<{$v['logo']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>" class="bh_case_img">
+                                    </a>
+                                </div>
+                            </div>
+                        <{/if}>
+                    <{/foreach}>
+                </div>
+            </div>
+        </div>
+        <div class="section" id='section4'>
+            <div class="contents">
+                <div class="content-head">
+                    <h3 class="section-title ">合作伙伴 <i class="section-title-p ">Cooperative Partner</i></h3>
+                    <div class="content-head-line-dotted">
+                        <div class="content-head-line-blue"></div>
+                    </div>
+                </div>
+                <div>
+                    <ul class="bh-partner-taps">
+                        <li>铁路行业</li>
+                        <li>水电工行业</li>
+                        <li>事业单位</li>
+                        <li>金融行业</li>
+                        <li>教育医疗</li>
+                        <li>生产制造</li>
+                        <li>物流百货</li>
+                    </ul>
+                </div>
+                <div class="content-main">
+                    <ul class="clearfix bh-partner-logo">
+                        <{foreach $fen as $k=>$v}>
+                            <{if $k<24}>
+                            <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+                                <div class="bh-partner-logo-box">
+                                    <div class="bh-partner-logo-line"></div>
+                                    <img style="width: 92px;height: 92px;" src="<{$v['tubiao']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>">
+                                </div>
+                            </li>
+                            <{/if}>
+                        <{/foreach}>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section" id='section5'>
+            <div class="contents">
+                <div class="content-head">
+                    <h3 class="section-title color_fff">关于我们 <i class="section-title-p color_fff">About US</i></h3>
+                    <div class="content-head-line content-head-line-fff"></div>
+                </div>
+                <div class="content-main bh-about-box">
+                    <div class="bh-about-left bh-about-img">
+                        <img src="<{$CUR_TPL_PATH}>images/home/aboutus-left.png" alt="">
+                    </div>
+                    <div class="bh-about-right bh-about-img">
+                        <img src="<{$CUR_TPL_PATH}>images/home/aboutus-right.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="<{$CUR_TPL_PATH}>js/jquery-1.8.3.min.js"></script>
+    <script src="<{$CUR_TPL_PATH}>js/jquery.fullPage.min.js"></script>
+    <script src="<{$CUR_TPL_PATH}>js/index.js"></script>
+    <script>
+        $(function(){
+            $('#dowebok').fullpage({
+                sectionsColor : ['fff'],
+                'navigation': true,
+                'navigationPosition': 'left',
+                'fixedElements':'.bh_nav_box',
+                'css3': true,
+                'afterLoad': function(anchorLink, index){
+                    switch(index) {
+                        case 3:
+                            $('.bh_case_main1').addClass('bh_case_box_top');
+                            $('.bh_case_main2').addClass('bh_case_box_bot');
+                            break
+                        case 4:
+                            $('.content-head-line-blue').width(100 + '%');
+                            $('.bh-partner-taps').addClass('bh-partner-taps-back');
+                            $('.bh-partner-logo').addClass('bh-partner-logo-show');
+                            break
+                        case 5:
+                            $('.bh-about-left').addClass('bh-about-left-back');
+                            $('.bh-about-right').addClass('bh-about-right-back');
+                            break
+                    }
+                },
+            });
+
+            $(window).resize(function(){
+                autoScrolling();
+            });
+
+            function autoScrolling(){
+                var $ww = $(window).width();
+                if($ww < 1024){
+                    $.fn.fullpage.setAutoScrolling(false);
+                } else {
+                    $.fn.fullpage.setAutoScrolling(true);
+                }
+            }
+
+            autoScrolling();
+        });
+    </script>
+</body>
+</html>

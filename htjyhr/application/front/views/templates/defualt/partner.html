@@ -1,0 +1,96 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <{include file="defualt/public/seo.html"}>
+    <link rel="stylesheet" href="<{$CUR_TPL_PATH}>css/bootstrap.css">
+    <link rel="stylesheet" href="<{$CUR_TPL_PATH}>layui/css/layui.css">
+    <link rel="stylesheet" href="<{$CUR_TPL_PATH}>css/main.css">
+    <link rel="stylesheet" href="<{$CUR_TPL_PATH}>css/swiper-4.3.3.min.css">
+    <script src="<{$CUR_TPL_PATH}>js/flexable.js"></script>
+</head>
+<body>
+    <!--导航区域-->
+    <div class="bh_nav_box">
+        <{include file="defualt/public/header.html"}>
+    </div>
+
+    
+    <!--banner区域-->
+    <div class="bh_banner bh_banner-product">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <a href="<{$banner['lianjie']}>" target="_blank">
+                        <img class="banner_03" src="<{$banner['suoluetu']}>" alt="">
+                    </a>
+                    <div class="carousel-caption"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--合作伙伴-->
+    <div class="bh_cooperation">
+        <div class="bh_cooperation_container">
+            <div class="bh_cooperation_tit">
+                <h3><{$bu['u1']}></h3>
+                <h3><{$bu['u2']}></h3>
+                <img src="<{$CUR_TPL_PATH}>images/home/tit_line.png" alt="">
+            </div>
+            <ul class="bh_cooperation_box clearfix">
+                <{foreach $fen as $v}>
+                    <li class="col-lg-8 col-md-3 col-sm-3 col-xs-4">
+                        <img src="<{$v['tubiao']}>" alt="<{$v['tupianalt']}>" title="<{$v['tupians']}>">
+                    </li>
+                <{/foreach}>
+            </ul>
+        </div>
+    </div>
+
+
+    <!--联系我们-->
+    <div class="bh_foot">
+        <{include file="defualt/public/footer.html"}>
+    </div>
+</body>
+<script src="<{$CUR_TPL_PATH}>js/jquery-3.3.1.min.js"></script>
+<!--公共样式引入-->
+<!--<script src="<{$CUR_TPL_PATH}>js/common.js"></script>-->
+<script src="<{$CUR_TPL_PATH}>js/jquery.running.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/bootstrap.js"></script>
+<script src="<{$CUR_TPL_PATH}>layui/layui.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/swiper-4.3.3.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/index.js"></script>
+<!--启动简介区域数字变动-->
+<script>
+    $(function(){
+        $('body').running();
+
+        /*移动端滑动导航*/
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 0,
+            slidesPerView:'auto',
+            freeMode: false
+        });
+
+        /*banner速度*/
+        $('.carousel').carousel({
+            interval: 3000
+        });
+    })
+</script>
+<script>
+   $(function(){
+    //点击按钮时判断 百度商桥代码中的“我要咨询”按钮的元素是否存在，存在的话就执行一次点击事件
+        $(".shangqiao").click(function(event) {
+            if ($('#nb_invite_ok').length > 0) {
+                $('#nb_invite_ok').click();
+            }
+        });
+   })
+</script>
+</html>

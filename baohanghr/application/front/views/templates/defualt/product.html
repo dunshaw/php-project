@@ -1,0 +1,149 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <{if $typeValue == 2}>
+        <title><{str_ireplace("成都","重庆",$seodata['t'])}></title>
+        <meta name="keywords" content="<{str_ireplace("成都","重庆",$seodata['k'])}>" />
+        <meta name="description" content="<{str_ireplace("成都","重庆",$seodata['d'])}>" />
+    <{else}>
+        <title><{$seodata['t']}></title>
+        <meta name="keywords" content="<{$seodata['k']}>" />
+        <meta name="description" content="<{$seodata['d']}>" />
+    <{/if}>
+    <link rel="stylesheet" href="<{$CUR_TPL_PATH}>css/bootstrap.css">
+    <link rel="stylesheet" href="<{$CUR_TPL_PATH}>layui/css/layui.css">
+    <link rel="stylesheet" href="<{$CUR_TPL_PATH}>css/main.css">
+    <link rel="stylesheet" href="<{$CUR_TPL_PATH}>css/swiper-4.3.3.min.css">
+    <script src="<{$CUR_TPL_PATH}>js/flexable.js"></script>
+</head>
+<body>
+    <!--导航区域-->
+    <div class="bh_nav_box">
+        <{include file="defualt/public/header.html"}>
+    </div>
+
+    <!--banner区域-->
+    <div class="bh_banner bh_banner-product">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <a href="<{$banner['lianjie']}>" target="_blank">
+                        <img class="banner_03" src="<{$banner['suoluetu']}>" alt="">
+                    </a>
+                    <div class="carousel-caption"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="swiper-product">
+        <a href="<{$banner['lianjie']}>">
+            <img src="<{$banner['shoujiduantupian']}>" alt="">
+        </a>
+    </div>
+
+    <!--tab切换区域-->
+    <div class="layui-tab layui-tab-brief zx-brief" lay-filter="docDemoTabBrief">
+        <div id="fiexd_title">
+            <ul class="product_tabs_bg">
+                <{foreach $sortList as $v}>
+                    <{if $v['id']==299}>
+                        <{foreach $v['child'] as $vv}>
+                            <{if $vv['id']==$sort}>
+                            <li class="layui-this">
+                                <a href="<{$vv['u5']}>&type=<{$typeValue}>"><{$typeName}><{$vv['u1']}></a>
+                            </li>
+                            <{else}>
+                            <li class="">
+                                <a href="<{$vv['u5']}>&type=<{$typeValue}>"><{$typeName}><{$vv['u1']}></a>
+                            </li>
+                            <{/if}>
+                        <{/foreach}>
+                    <{/if}>
+                <{/foreach}>
+            </ul>
+        </div>
+        <!--面包屑导航-->
+        <div id="nav_crumbs2">
+            <a href="<{$sortList[0]['u5']}>"><{$sortList[0]['u1']}>>
+                <a href="<{$sortList[2]['u5']}>&type=<{$typeValue}>"><{$sortList[2]['u1']}>>
+                    <a href="javascript:;"><{$mingList}></a>
+                </a>
+            </a>
+        </div>
+        <div class="layui-tab-content">
+            <!--人才外包区域-->
+            <div class="layui-tab-item layui-show clearfix">
+                <div class="product_tabs product_talent clearfix">
+                    <{foreach $pin as $v}>
+                    <div class="product_item">
+                        <div class="itemp-left">
+                          <div class="con-text">
+                            <h3 class="h3"><{$v['biaoti']}></h3>
+                            <span class="span1"><img src="<{$v['tubiao']}>" alt=""></span>
+                            <p class="p1"><{$v['biaotiying']}></p>
+                            <div class="product_tabs_text"><{html_entity_decode($v['jianjie'])}></div>
+                          </div>
+                        </div>
+                        <div class="img1" style="background: url(<{$v['suoluetu']}>) center/cover no-repeat;"></div>
+                    </div>
+                    <{/foreach}>
+                </div>
+                <div class="product_tabs_bottom ">
+                    <div class="product_tabs_bottom_box">
+                        <{foreach $an as $v}>
+                        <div class="product_tabs_bottom_box_right">
+                            <h3><{$v['biaoti']}></h3>
+                            <p><{$v['dtime']}></p>
+                            <p><{html_entity_decode($v['jianjie'])}></p>
+                            <a href="/case/detail?id=<{$v['id']}>&sort_id=305">案例详情</a>
+                        </div>
+                        <{/foreach}>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--联系我们-->
+    <div class="bh_foot">
+        <{include file="defualt/public/footer.html"}>
+    </div>
+</body>
+<script src="<{$CUR_TPL_PATH}>js/jquery-3.3.1.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/jquery.running.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/bootstrap.js"></script>
+<script src="<{$CUR_TPL_PATH}>layui/layui.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/swiper-4.3.3.min.js"></script>
+<script src="<{$CUR_TPL_PATH}>js/index.js"></script>
+<script>
+    //tab切换功能
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+
+</script>
+<script>
+   $(function(){
+    //点击按钮时判断 百度商桥代码中的“我要咨询”按钮的元素是否存在，存在的话就执行一次点击事件
+        $(".shangqiao").click(function(event) {
+            if ($('#nb_invite_ok').length > 0) {
+                $('#nb_invite_ok').click();
+            }
+        });
+        var offs = $('#fiexd_title').offset();
+        $(window).scroll(function() {
+           if(IsPC()){
+              scrollLis($('#fiexd_title'),offs);
+           } 
+        });
+   })
+
+
+    
+</script>
+</html>

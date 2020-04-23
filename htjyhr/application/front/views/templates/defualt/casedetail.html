@@ -1,0 +1,93 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><{$one['biaoti']}> </title>
+    <meta name="keywords" content="<{$one['neirong']}>" />
+    <meta name="description" content="<{$one['miaoshu']}>" />
+    <link href="<{$CUR_TPL_PATH}>css/bootstrap.css" rel="stylesheet">
+    <link href="<{$CUR_TPL_PATH}>layui/css/layui.css" rel="stylesheet">
+    <link href="<{$CUR_TPL_PATH}>css/main.css" rel="stylesheet">
+    <script src="<{$CUR_TPL_PATH}>js/flexable.js"></script>
+</head>
+<body>
+<!--导航区域-->
+    <div class="bh_nav_box">
+        <{include file="defualt/public/header.html"}>
+    </div>
+
+<!--banner区域-->
+    <div class="bh_banner">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img class="banner_06" src="<{$banner['suoluetu']}>" alt="">
+                        <img class="banner_06_small" src="<{$banner['shoujiduantupian']}>" alt="">
+                        <div class="carousel-caption"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--内容区域-->
+    <div class="news_content_box">
+        <!--面包屑导航-->
+<!--         <div id="nav_crumbs2">
+            <a href="<{$sortList[0]['u5']}>"><{$sortList[0]['u1']}>>
+                <a href="<{$sortList[3]['u5']}>"><{$sortList[3]['u1']}>>
+                    <a href="javascript:;"><{$one['biaoti']}></a>
+                </a>
+            </a>
+        </div> -->
+        <div class="news_content_tit clearfix">
+            <h1><{$one['biaoti']}></h1>
+            <p>发布时间：<{$one['dtime']}> </p>
+            <p>浏览量：<{$one['dianjiliang']}></p>
+        </div>
+        <div class="news_content">
+            <{html_entity_decode($one['neirong'])}>
+        </div>
+        <div class="clearfix">
+            <{if empty($after)}>
+            <a class="shang" href="javascript:;">上一篇:没有了</a>
+            <{else}>
+            <a class="shang" href="/case/detail?id=<{$after['id']}>&sort_id=305">上一篇:<{$after['biaoti']}></a>
+            <{/if}>
+            <{if empty($next)}>
+            <a class="xia" href="javascript:;">下一篇:没有了</a>
+            <{else}>
+            <a class="xia" href="/case/detail?id=<{$next['id']}>&sort_id=305">下一篇:<{$next['biaoti']}></a>
+            <{/if}>
+        </div>
+    </div>
+<!--联系我们-->
+   <div class="bh_foot">
+       <{include file="defualt/public/footer.html"}>
+   </div>
+    <script src="<{$CUR_TPL_PATH}>js/jquery-3.3.1.min.js"></script>
+    <script src="<{$CUR_TPL_PATH}>js/jquery.running.min.js"></script>
+    <script src="<{$CUR_TPL_PATH}>js/bootstrap.js"></script>
+    <script src="<{$CUR_TPL_PATH}>layui/layui.js"></script>
+    <script src="<{$CUR_TPL_PATH}>js/index.js"></script>
+<script>
+//    tab切换功能
+    layui.use('element', function(){
+        var element = layui.element;
+        //…
+    });
+</script>
+<script>
+   $(function(){
+    //点击按钮时判断 百度商桥代码中的“我要咨询”按钮的元素是否存在，存在的话就执行一次点击事件
+        $(".shangqiao").click(function(event) {
+            if ($('#nb_invite_ok').length > 0) {
+                $('#nb_invite_ok').click();
+            }
+        });
+   })
+</script>
+</body>
+</html>
