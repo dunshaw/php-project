@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: 
-Disallow: application/admin/*
-Disallow: silephp/*
-Sitemap: http://www.baohanghr.com/sitemap.txt
-Sitemap: http://www.baohanghr.com/sitemap.xml
